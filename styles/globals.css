@@ -1,9 +1,18 @@
+* {
+  box-sizing: border-box;
+}
 html,
 body {
+    --primary-color: rgb(62, 100, 255);
+    --complete-color: #27aa80;
+    --text-color: #172b4d;
+    --disabled-color: #fad6d6;
+    --background-color: #f5eaea;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--text-color);
 }
 
 a {
@@ -11,6 +20,3 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
