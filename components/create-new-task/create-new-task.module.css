@@ -1,3 +1,4 @@
+/* MOVE values to global theme */
 .open_button {
 	position: absolute;
 	top: 0;
@@ -77,11 +78,9 @@
   color: white;
   font-weight: 800;
   cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #4CAF50;
-  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .btn_primary {
@@ -89,7 +88,18 @@
   color: white;
 }
 
+.btn_primary:hover {
+  background-color: #364dd1;
+  color: white;
+}
+
 .btn_secondary {
   background-color: #d42929;
   color: white;
 }
+
+.btn_secondary:hover {
+  background-color: #d34949;
+  color: white;
+}
+

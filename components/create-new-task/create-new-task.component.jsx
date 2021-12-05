@@ -1,6 +1,8 @@
 import { useState } from "react";
 import css from "./create-new-task.module.css";
 import Modal from "react-modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 Modal.setAppElement("#__next");
 
@@ -10,6 +12,21 @@ const CreateNewTask = () => {
   const [taskDescription, setTaskDescription] = useState("");
   const [taskPriority, setTaskPriority] = useState("");
   const [taskStatus, setTaskStatus] = useState("");
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    console.log(taskName, taskDescription, taskPriority, taskStatus);
+    setModalIsOpen(false);
+  };
+
+  const handleBlur = (e) => {
+    if (e.target.value === "" && !e.target.classList.contains("input-error")) {
+      e.target.classList.add("input_error");
+    }
+    if (e.target.value !== "" && e.target.classList.contains("input_error")) {
+      e.target.classList.remove("input_error");
+    }
+  };
 
   return (
     <>
@@ -36,6 +53,7 @@ const CreateNewTask = () => {
                   Task name
                 </label>
                 <input
+                  onBlur={(e) => handleBlur(e)}
                   onChange={(e) => setTaskName(e.target.value)}
                   type="text"
                   className={css.form_control}
@@ -48,6 +66,7 @@ const CreateNewTask = () => {
                   Task description
                 </label>
                 <textarea
+                  onBlur={(e) => handleBlur(e)}
                   onChange={(e) => setTaskDescription(e.target.value)}
                   className={css.form_control}
                   id="task-description"
@@ -63,6 +82,7 @@ const CreateNewTask = () => {
                   className={css.form_control}
                   id="task-priority"
                   onChange={(e) => setTaskPriority(e.target.value)}
+                  onBlur={(e) => handleBlur(e)}
                 >
                   <option>Low</option>
                   <option>Medium</option>
@@ -74,6 +94,7 @@ const CreateNewTask = () => {
                   Task status
                 </label>
                 <select
+                  onBlur={(e) => handleBlur(e)}
                   className={css.form_control}
                   id="task-status"
                   onChange={(e) => setTaskStatus(e.target.value)}
@@ -92,21 +113,23 @@ const CreateNewTask = () => {
                   className={css.form_control}
                   id="task-date"
                   onChange={(e) => e.target.value}
+                  onBlur={(e) => handleBlur(e)}
                 />
               </div>
               <div className={css.button_group}>
                 <button
                   type="submit"
                   className={`${css.btn} ${css.btn_primary}`}
+                  onClick={(e) => onSubmitForm(e)}
                 >
-                  Submit
+                  Submit <FontAwesomeIcon icon={faArrowRight} />
                 </button>
                 <button
                   type="cancel"
                   className={`${css.btn} ${css.btn_secondary}`}
                   onClick={() => setModalIsOpen(false)}
                 >
-                  Cancel
+                  Cancel <FontAwesomeIcon icon={faTimes} />
                 </button>
               </div>
             </form>
