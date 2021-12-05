@@ -67,6 +67,21 @@ export default function Home() {
     setColumns(newColumns);
   };
 
+  const createNewTask = (task) => {
+    const newColumns = JSON.parse(JSON.stringify(columns));
+    const newTask = {
+      taskId: task.taskId,
+      title: task.title,
+      description: task.description,
+      status: task.status,
+    };
+
+    const columnList = newColumns.find((t) => t.title === task.status);
+    columnList.values.push(newTask);
+
+    setColumns(newColumns);
+  };
+
   console.log({ columns });
   return (
     <>
@@ -81,7 +96,7 @@ export default function Home() {
         {columns.map((c) => {
           return (
             <div key={c.title} className={styles.col_wrapper}>
-              <CreateNewTask />
+              <CreateNewTask status={c.title} createTask={createNewTask} />
               <h2 className={styles.col_header}>{c.title}</h2>
               <DropWrapper
                 moveItem={moveItemToDifferentColumn}

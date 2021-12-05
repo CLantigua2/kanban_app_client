@@ -1,9 +1,9 @@
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 import { taskStatusType } from "../constants";
 
 export const data = [
   {
-    taskId: uuid(),
+    taskId: v4(),
     status: taskStatusType.OPEN,
     title: "Create Feature A",
     description: "Feature A is needed, so make it",
@@ -14,7 +14,7 @@ export const data = [
       return [
         {
           taskId: this.taskId,
-          commentId: uuid(),
+          commentId: v4(),
           commentText: "hello world",
           commentDate: new Date(),
         },
@@ -22,7 +22,7 @@ export const data = [
     },
   },
   {
-    taskId: uuid(),
+    taskId: v4(),
     status: taskStatusType.OPEN,
     title: "Refactor feature B",
     description: "Feature B is broken, so fix it",
@@ -33,7 +33,7 @@ export const data = [
       return [
         {
           taskId: this.taskId,
-          commentId: uuid(),
+          commentId: v4(),
           commentText: "Is this even working?",
           commentDate: new Date(),
         },
@@ -41,7 +41,7 @@ export const data = [
     },
   },
   {
-    taskId: uuid(),
+    taskId: v4(),
     status: taskStatusType.OPEN,
     title: "Create Feature C",
     description: "Feature C is needed, so make it",
@@ -52,7 +52,7 @@ export const data = [
       return [
         {
           taskId: this.taskId,
-          commentId: uuid(),
+          commentId: v4(),
           commentText: "hello world",
           commentDate: new Date(),
         },

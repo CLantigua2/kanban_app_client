@@ -3,19 +3,28 @@ import css from "./create-new-task.module.css";
 import Modal from "react-modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { v4 } from "uuid";
+import { PRIORITY_TYPES } from "../../constants";
 
 Modal.setAppElement("#__next");
 
-const CreateNewTask = () => {
+const CreateNewTask = ({ createTask, status }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskPriority, setTaskPriority] = useState("");
-  const [taskStatus, setTaskStatus] = useState("");
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    console.log(taskName, taskDescription, taskPriority, taskStatus);
+    createTask({
+      taskId: v4(),
+      title: taskName,
+      description: taskDescription,
+      priority: taskPriority,
+      createdDate: new Date(), // delete this
+      status: status,
+    });
+
     setModalIsOpen(false);
   };
 
@@ -27,6 +36,10 @@ const CreateNewTask = () => {
       e.target.classList.remove("input_error");
     }
   };
+
+  const priorityList = Object.values(PRIORITY_TYPES).map(
+    (priority) => priority,
+  );
 
   return (
     <>
@@ -84,26 +97,14 @@ const CreateNewTask = () => {
                   onChange={(e) => setTaskPriority(e.target.value)}
                   onBlur={(e) => handleBlur(e)}
                 >
-                  <option>Low</option>
-                  <option>Medium</option>
-                  <option>High</option>
+                  {priorityList.map((priority) => (
+                    <option key={priority} value={priority}>
+                      {priority}
+                    </option>
+                  ))}
                 </select>
               </div>
-              <div className={css.form_group}>
-                <label className={css.form_label} htmlFor="task-status">
-                  Task status
-                </label>
-                <select
-                  onBlur={(e) => handleBlur(e)}
-                  className={css.form_control}
-                  id="task-status"
-                  onChange={(e) => setTaskStatus(e.target.value)}
-                >
-                  <option>Not started</option>
-                  <option>In progress</option>
-                  <option>Completed</option>
-                </select>
-              </div>
+
               <div className={css.form_group}>
                 <label className={css.form_label} htmlFor="task-date">
                   Task date

@@ -20,3 +20,10 @@ export const statusColors = {
 };
 
 export const ITEM_TYPE = "ITEM";
+
+export const PRIORITY_TYPES = {
+  LOW: "Low",
+  MEDIUM: "Medium",
+  HIGH: "High",
+  VERY_HIGH: "Very High",
+};
