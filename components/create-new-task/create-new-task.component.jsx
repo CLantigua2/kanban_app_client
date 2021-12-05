@@ -94,16 +94,21 @@ const CreateNewTask = () => {
                   onChange={(e) => e.target.value}
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-              <button
-                type="cancel"
-                className="btn btn-secondary"
-                onClick={() => setModalIsOpen(false)}
-              >
-                Cancel
-              </button>
+              <div className={css.button_group}>
+                <button
+                  type="submit"
+                  className={`${css.btn} ${css.btn_primary}`}
+                >
+                  Submit
+                </button>
+                <button
+                  type="cancel"
+                  className={`${css.btn} ${css.btn_secondary}`}
+                  onClick={() => setModalIsOpen(false)}
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>
