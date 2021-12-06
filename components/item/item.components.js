@@ -57,11 +57,7 @@ const Item = ({ item, moveItem, index, column, columns }) => {
     }),
   });
 
-  const onOpen = () => setShow(true);
-  const onClose = (e) => {
-    e.stopPropagation();
-    setShow(false);
-  };
+  const handleAccordion = () => setShow(!show);
 
   drag(drop(ref));
 
@@ -71,7 +67,7 @@ const Item = ({ item, moveItem, index, column, columns }) => {
       ref={ref}
       style={{ opacity: isDragging ? 0 : 1 }}
       className={css.item}
-      onClick={onOpen}
+      onClick={handleAccordion}
       onKeyDown={() => {}}
     >
       <div
@@ -79,7 +75,11 @@ const Item = ({ item, moveItem, index, column, columns }) => {
         style={{ backgroundColor: statusColors[column.status] }}
       ></div>
       <p className={css.item_title}>{item.title}</p>
-      <Window item={item} close={onClose} show={show} />
+      <div
+        className={`${css.item_content} ${show ? css.expanded : css.closed}`}
+      >
+        <Window item={item} show={show} />
+      </div>
     </div>
   );
 };

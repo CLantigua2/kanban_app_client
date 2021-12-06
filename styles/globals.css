@@ -1,18 +1,84 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-size: 62.5%;
+}
+
 html,
 body {
-    --primary-color: rgb(62, 100, 255);
-    --complete-color: #27aa80;
-    --text-color: #172b4d;
-    --disabled-color: #fad6d6;
-    --background-color: #f5eaea;
+  --black: #000000;
+  --white: #ffffff;
+  --button-default-color: #586072;
+  --button-primary-color: #0079bf;
+  --button-primary-color-dark: #0067a3;
+  --button-information-color: #27aa80;
+  --button-disabled: #aaaaaa;
+  --text-color: #6b778c;
+  --disabled-color: #fad6d6;
+  --background-color: #0079bf;
+  --background-column: #ebecf0;
+  --error-border-color: #fad6d6;
+  --error-text-color: #d42929;
+  --border-color: #e6e6e6;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-sm: 0.875rem;
+  --font-size-xs: 0.75rem;
+  
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --border-radius: 0.5rem;
+  --border-radius-small: 0.3rem;
+  --border-radius-large: 0.7rem;
+  --border-radius-xlarge: 1rem;
+  --box-shadow: 0 1px 0 #091e4240;
+  
+
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: var(--text-color);
+  height: 100%;
+}
+
+q,
+p,
+ul,
+li,
+ol,
+div,
+span,
+input,
+button,
+textarea,
+select,
+::placeholder {
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  font-weight: var(--font-weight-regular);
+  padding: 0;
+  margin: 0;
+  margin-bottom: 4px;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-normal);
+  margin: 0;
+  margin-bottom: 4px;
+  color: var(--black);
 }
 
 a {
@@ -21,5 +87,10 @@ a {
 }
 
 .input_error {
-  border: 1px solid #d42929 !important;
+  border: 1px solid var(--error-border-color) !important;
+}
+
+svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
